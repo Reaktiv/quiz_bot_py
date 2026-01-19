@@ -10,21 +10,16 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 from dotenv import load_dotenv
 from utils.notify_admins import bot_start_up, bot_shut_down
-
+from handlers.register import register_router
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 
 dp = Dispatcher()
 
+dp.include_router(register_router)
 
-@dp.message(CommandStart())
-async def command_start_handler(message: Message) -> None:
-    await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!")
 
-@dp.message(Command("test"))
-async def test_solving(message: Message):
-    await message.answer("Testimiz boshlanmoqda")
 
 
 async def main() -> None:
