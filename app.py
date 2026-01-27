@@ -11,13 +11,15 @@ from aiogram.types import Message
 from dotenv import load_dotenv
 from utils.notify_admins import bot_start_up, bot_shut_down
 from handlers.register import register_router
+from handlers import *
 
 load_dotenv()
 TOKEN = getenv("BOT_TOKEN")
 
 dp = Dispatcher()
 
-dp.include_router(register_router)
+
+dp.include_routers(register_router, start_router)
 
 
 
