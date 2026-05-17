@@ -16,15 +16,15 @@ TOKEN = getenv("BOT_TOKEN")
 dp = Dispatcher()
 
 
-dp.include_routers(register_router, start_router)
+dp.include_routers(register_router, start_router, quiz_router)
 
 
 
 
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-    dp.startup.register(bot_start_up)
-    dp.shutdown.register(bot_shut_down)
+    # dp.startup.register(bot_start_up)
+    # dp.shutdown.register(bot_shut_down)
     # And the run events dispatching
     await dp.start_polling(bot)
 
